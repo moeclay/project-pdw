@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJS</title>
+
+  <!-- Menyisipkan Vuejs dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+  <!-- elemen kontainer untuk aplikasi -->
+  <div id="app">
+    <div v-bind:class="{ active: isActive }">content 1</div>
+    
+    <div class="static" v-bind:class="{ 'active': isActive, 'text-danger': hasError }">content 2</div>
+
+    <div v-bind:class="classObject">content 3</div>
+
+    <div v-bind:class="classObject2">content 4</div>
+
+    <div v-bind:class="[activeClass, errorClass]">content 5</div>
+  </div>
+
+  <!-- aplikasi Vue -->
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        isActive: true,
+        error: null,
+        hasError: true,
+        classObject: {
+          'active': true,
+          'text-warning': true
+        },
+        // array sintax
+        activeClass: 'active',
+        errorClass: 'text-success'
+      },
+      computed: {
+        classObject2: function(){
+          return {
+            'active': this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

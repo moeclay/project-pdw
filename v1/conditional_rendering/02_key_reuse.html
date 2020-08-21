@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJS</title>
+
+  <!-- Menyisipkan Vuejs dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+  <!-- elemen kontainer untuk aplikasi -->
+  <div id="app">
+    <template v-if="loginType === 'username'">
+      <label>Username</label>
+      <input type="text" placeholder="Enter your username">
+    </template>
+    <template v-else>
+      <label>Email</label>
+      <input type="email" placeholder="Enter your email">
+    </template>
+    <hr>
+    <h1 v-show="ok">Hi, Binding Show</h1>
+  </div>
+
+  <!-- aplikasi Vue -->
+  <script>
+
+    var app = new Vue({
+      el: "#app",
+      data: {
+        loginType: 'username',
+        ok: true
+      }
+    });
+  </script>
+</body>
+</html>

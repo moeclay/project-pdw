@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJS</title>
+
+  <!-- Menyisipkan Vuejs dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+  <!-- elemen kontainer untuk aplikasi -->
+  <div id="app">
+    <h1 v-if="awesome">Vue is Awesome!</h1>
+    <h1 v-else>Oh no 😢</h1>
+    
+    <hr>
+    <template v-if="ok">
+      <h1>Title</h1>
+      <p>Paragraf 1</p>
+      <p>Paragraf 2</p>
+    </template>
+
+    <hr>
+    <div v-if="random > 0.5">
+      Now you see me: {{ random }}
+    </div>
+    <div v-else>
+      Now you don't
+    </div>
+
+    <hr>
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Not A/B/C
+    </div>
+  </div>
+
+  <!-- aplikasi Vue -->
+  <script>
+
+    var app = new Vue({
+      el: "#app",
+      data: {
+        awesome: true,
+        ok: true,
+        random: Math.random(),
+        type: 'a'.toUpperCase()
+      }
+    });
+  </script>
+</body>
+</html>

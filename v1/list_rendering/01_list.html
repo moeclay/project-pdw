@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJS</title>
+
+  <!-- Menyisipkan Vuejs dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+  <!-- elemen kontainer untuk aplikasi -->
+    <ul id="app">
+      <li v-for="item in items" :key="item.message">
+        {{ item.message }}
+      </li>
+    </ul>
+    
+    <hr>
+    
+    <ul id="example-2">
+      <li v-for="(item, index) in items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+      </li>
+    </ul>
+
+    <hr>
+
+    <ul id="v-for-object" class="demo">
+      <li v-for="value in object">
+        {{ value }}
+      </li>
+    </ul>
+
+    <hr>
+
+    <div id="v-for-object2">
+      <div v-for="(value, name) in object">
+        {{ name }}: {{ value }}
+      </div>
+
+      <hr>
+      <div v-for="(value, name, index) in object">
+        {{ index }}. {{ name }}: {{ value }}
+      </div>
+      
+    </div>
+
+  <!-- aplikasi Vue -->
+  <script>
+
+    var app = new Vue({
+      el: "#app",
+      data: {
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' },
+          { message: 'Tui' },
+          { message: 'Juy' },
+        ]
+      }
+    });
+
+    var example2 = new Vue({
+      el: '#example-2',
+      data: {
+        parentMessage: 'Parent',
+        items: [
+          { message: 'Foo' },
+          { message: 'Bar' }
+        ]
+      }
+    });
+
+    new Vue({
+      el: '#v-for-object',
+      data: {
+        object: {
+          title: 'How to do lists in Vue',
+          author: 'Jane Doe',
+          publishedAt: '2016-04-10'
+        }
+      }
+    });
+
+    new Vue({
+      el: '#v-for-object2',
+      data: {
+        object: {
+          title: 'How to do lists in Vue',
+          author: 'Jane Doe',
+          publishedAt: '2016-04-10'
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>

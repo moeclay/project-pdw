@@ -1,0 +1,19 @@
+Vue membungkus metode mutasi array yang diamati sehingga mereka juga akan memicu pembaruan tampilan. Metode yang dibungkus adalah:
+
+    push()
+    pop()
+    shift()
+    unshift()
+    splice()
+    sort()
+    reverse()
+
+# Replacing an Array
+- filter()
+- concat()
+- slice()
+
+# example code:
+example1.items = example1.items.filter(function (item) {
+  return item.message.match(/Foo/)
+})

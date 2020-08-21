@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aplikasi Vue: Direktif untuk Event</title>
+  <!-- Menyisipkan Vuejs dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>Ask a yes/no question: <input v-model="question"></p>
+    <p>{{ answer }}</p>
+    <img v-if="seen" v-bind:src="images" alt="images">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <script>
+  var watchExampleVM = new Vue({
+    el: '#app',
+    data: {
+      question: '',
+      images: '',
+      seen: false,
+      answer: 'I cannot give you an answer until you ask a question!'
+    },
+    watch: {
+      // whenever question changes, this function will run
+      question: function (newQuestion, oldQuestion) {
+        this.answer = 'Waiting for you to stop typing...'
+        this.debouncedGetAnswer()
+      }
+    },
+    created: function () {
+      this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+    },
+    methods: {
+      getAnswer: function () {
+        if (this.question.indexOf('?') === -1) {
+          this.answer = 'Questions usually contain a question mark. ;-)'
+          return
+        }
+        this.answer = 'Thinking...'
+        var vm = this
+        axios.get('https://yesno.wtf/api')
+          .then(function (response) {
+            vm.answer = _.capitalize(response.data.answer)
+            vm.images = response.data.image
+            vm.seen = true
+            console.log(response.data.image);
+          })
+          .catch(function (error) {
+            vm.answer = 'Error! Could not reach the API. ' + error
+          })
+      }
+    }
+  })
+  </script>  
+</body>
+
+</html>

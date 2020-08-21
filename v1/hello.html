@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Pandawa24Jam</title>
+
+	<!-- Menyisipkan Vuejs dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- mengikat di input 1 arah-->
+		<input type="text" v-bind:value="message"><br><br>
+		<!-- mengikat di input 2 arah-->
+		<input type="text" v-model:value="message">
+		<p>{{ message }}</p>
+		<hr>
+		<a v-bind:href="url">Pandawa24Jam</a>
+		<hr>
+		<p v-if="seen" v-bind:title="title">Now you see me</p>
+		<hr>
+		<img v-bind:src="imageUrl" v-bind:alt="imageAlt" v-bind:title="title" width="150px"/>
+	</div>
+
+	<!-- aplikasi vue hello -->
+	<script>
+		var app = new Vue({
+			el: "#app",
+			data: {
+				message: "Hello Wolrd !",
+				url: "https:pandawa24jam.com/",
+				seen: true,
+				title: "directive vueJS",
+				imageUrl: "https://pbs.twimg.com/profile_images/752518047785680896/UDRhCmtb.jpg",
+				imageAlt: "VueJS Image"
+			}
+		});
+	</script>
+</body>
+</html>

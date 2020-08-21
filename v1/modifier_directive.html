@@ -1,0 +1,31 @@
+-- Modifier Directive
+<form v-on:submit.prevent="onSubmit"> ... </form>
+
+
+-- Shorthand Directive v-bind
+<!-- tanpa singkatan -->
+<a v-bind:href="url"> ... </a>
+
+<!-- shorthand -->
+<a :href="url"> ... </a>
+
+<!-- shorthand untuk argumen dinamis (2.6.0+) -->
+<a :[key]="url"> ... </a>
+
+
+-- Shorthand Directive v-on
+<!-- tanpa singkatan -->
+<a v-on:click="doSomething"> ... </a>
+
+<!-- shorthand -->
+<a @click="doSomething"> ... </a>
+
+<!-- shorthand untuk argumen dinamis (2.6.0+) -->
+<a @[event]="doSomething"> ... </a>
+
+
+-- Directive yg Harus Kamu Ingat
+- Binding: v-bind, v-model, v-html, v-text, v-once dll
+- Conditional: v-if, v-else, v-else-if
+- Looping: v-for
+- Event: v-on

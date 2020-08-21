@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueJS</title>
+
+  <!-- Menyisipkan Vuejs dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+  <!-- elemen kontainer untuk aplikasi -->
+  <div id="app">
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize+'px', textTransform: textDecor}">Binding Inline Style</div>
+    <div v-bind:style="styleObject">Binding Style 2</div>
+    <div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">Binding Style 3</div>
+    <div v-bind:style="[baseStyles, overridingStyles]">Binding Style 4</div>
+  </div>
+
+  <!-- aplikasi Vue -->
+  <script>
+
+    var app = new Vue({
+      el: "#app",
+      data: {
+        activeColor: 'red',
+        fontSize: 30,
+        textDecor: 'uppercase',
+        styleObject: {
+          color: 'blue',
+          fontSize: '20px'
+        },
+        baseStyles: {
+          color: 'gray'
+        },
+        overridingStyles: {
+          fontSize: '15px'
+        }
+      }
+    });
+  </script>
+</body>
+</html>
